@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+      }
+      #greeting {
+        font-size: 3em;
+        font-weight: bold;
+        padding: 20px 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: color 0.5s ease, transform 0.5s ease;
+        animation: pulse 3s infinite;
+        user-select: none;
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="greeting"></h1>
+
+    <script>
+      const colors = [
+        "#e63946", // red
+        "#f1faee", // off-white
+        "#a8dadc", // light blue
+        "#457b9d", // blue
+        "#1d3557", // dark blue
+        "#ffb703", // yellow
+        "#fb8500"  // orange
+      ];
+
+      // Pick a random color from the array
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Get the path after the "/"
+      const path = window.location.pathname.replace("/", "");
+
+      // Capitalize the first letter of the name
+      const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+      // Compose the greeting message
+      const message = path
+        ? `Hello from ${capitalize(path)}`
+        : "Hello from someone";
+
+      const greeting = document.getElementById("greeting");
+      greeting.innerText = message;
+      greeting.style.color = randomColor;
+    </script>
+  </body>
+</html>
+
